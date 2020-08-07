@@ -6,14 +6,14 @@ LABEL description="AOI Enumerator Submitter Container"
 USER ops
 
 # copy packages
-COPY . /home/ops/verdi/ops/aoi_enumerator_submitter
+COPY . /home/ops/verdi/ops/acq_enumerator_submitter
 RUN set -ex \
  && source /home/ops/verdi/bin/activate \
- && sudo chown -R ops:ops /home/ops/verdi/ops/aoi_enumerator_submitter \
- && cd /home/ops/verdi/ops/aoi_enumerator_submitter  \
+ && sudo chown -R ops:ops /home/ops/verdi/ops/acq_enumerator_submitter \
+ && cd /home/ops/verdi/ops/acq_enumerator_submitter  \
  && pip install numpy
 
-COPY . /home/ops/verdi/ops/aoi_enumerator_submitter
+COPY . /home/ops/verdi/ops/acq_enumerator_submitter
 
 # set entrypoint
 WORKDIR /home/ops
