@@ -32,7 +32,8 @@ def main():
         "endtime": endtime,
         "location": json.loads(geojson_polygon)
     }
-    tracks = parse_tracks(ctx, aoi) #parse the tracks from context. If none are input, returns False
+    #tracks = parse_tracks(ctx, aoi) #parse the tracks from context. If none are input, returns False
+    tracks = parse_tracks(ctx) #parse the tracks from context. If none are input, returns False
     skip_days = ctx.get('skipDays', 0)
     minmatch = ctx.get('minMatch', 2)
     acquisition_version = ctx.get('acquisition_version')
