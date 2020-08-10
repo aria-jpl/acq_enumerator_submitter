@@ -104,12 +104,13 @@ def submit_enum_job(poeorb, aoi, track, queue, job_version, minmatch, acquisitio
     priority = 5
     # 2020087, xing
     #tags = '{}_T{}_enumeration'.format(aoi.get('_id', 'AOI'), track)
-    tags = '{}_T{}_enumeration_test_abc'
+    tags = '{}_T{}_enumeration'.format("ACQ", track)
     #    "aoi_name": aoi.get('_id'),
     job_params = {
         "workflow": "orbit_acquisition_enumerator_standard_product.sf.xml",
         "project": "grfn",
         "dataset_version": "v2.0.0",
+        "geojson_polygon": aoi["location"],
         "minMatch": minmatch,
         "threshold_pixel": 5,
         "acquisition_version": acquisition_version,
