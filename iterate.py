@@ -121,6 +121,7 @@ def submit_enum_job(poeorb, aoi, track, queue, job_version, minmatch, acquisitio
         "platform": poeorb.get('_source').get('metadata').get('platform'),
         "localize_products": poeorb.get('_source').get('urls')[1]
     }
+    print("json.dumps(job_params)", json.dumps(job_params))
     submit_job.main(job_name, job_params, job_version, queue, priority, tags)
 
 """
