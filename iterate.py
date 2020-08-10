@@ -110,7 +110,7 @@ def submit_enum_job(poeorb, aoi, track, queue, job_version, minmatch, acquisitio
         "workflow": "orbit_acquisition_enumerator_standard_product.sf.xml",
         "project": "grfn",
         "dataset_version": "v2.0.0",
-        "geojson_polygon": aoi["location"],
+        "location_geojson": json.dumps(aoi["location"]),
         "minMatch": minmatch,
         "threshold_pixel": 5,
         "acquisition_version": acquisition_version,
