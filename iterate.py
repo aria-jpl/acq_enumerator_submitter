@@ -22,6 +22,7 @@ def main():
     ctx = load_context()
     queue = ctx.get('enumerator_queue', 'standard_product-s1gunw-acq_enumerator')
     enumeration_job_version = ctx.get('enumeration_job_version', 'master')
+    requestId = ctx.get("request_id")
     # 2020806, xing
     #aoi = get_aoi(ctx.get('aoi_name'))
     starttime = ctx.get("starttime")
@@ -43,13 +44,13 @@ def main():
     if tracks is False:
         #run for all tracks
         print('Querying for all tracks...')
-        submit_all_jobs(poeorbs, aoi, False, queue, enumeration_job_version, minmatch, acquisition_version, skip_days)
+        submit_all_jobs(poeorbs, requestId, aoi, False, queue, enumeration_job_version, minmatch, acquisition_version, skip_days)
     else:
         for track in tracks:
             print('Querying for track: {}...'.format(track))
-            submit_all_jobs(poeorbs, aoi, track, queue, enumeration_job_version, minmatch, acquisition_version, skip_days)
+            submit_all_jobs(poeorbs, requestId, aoi, track, queue, enumeration_job_version, minmatch, acquisition_version, skip_days)
        
-def submit_all_jobs(poeorbs, aoi, track, queue, version, minmatch, acquisition_version, skip_days):
+def submit_all_jobs(poeorbs, requestId, aoi, track, queue, version, minmatch, acquisition_version, skip_days):
     '''gets all the covered acquisitions, determine intersects, & submit enum jobs'''
     #get all acquisitions covered by the AOI & optional tracks
     acquisitions = get_objects('acq', aoi, track)
@@ -60,7 +61,7 @@ def submit_all_jobs(poeorbs, aoi, track, queue, version, minmatch, acquisition_v
     #submit enumeration jobs for that AOI and track
     for poeorb in matching_poeorbs:
         print('Submitting enumeration job for poeorb: {}'.format(poeorb.get('_id')))
-        submit_enum_job(poeorb, aoi, track, queue, version, minmatch, acquisition_version, skip_days)
+        submit_enum_job(poeorb, requestId, aoi, track, queue, version, minmatch, acquisition_version, skip_days)
 
 def determine_matching_poeorbs(poeorbs, acquisitions):
     '''determines which poeorbs are covered by an acquisition. returns a list of those poeorbs'''
@@ -97,13 +98,14 @@ def build_acq_dict(acquisitions):
 def build_acquisition_matrix(acq_dict):
     return np.array(list(acq_dict.keys()))
 
-def submit_enum_job(poeorb, aoi, track, queue, job_version, minmatch, acquisition_version, skip_days):
+def submit_enum_job(poeorb, requestId, aoi, track, queue, job_version, minmatch, acquisition_version, skip_days):
     '''submits an enumeration job for the give poeorb, aoi, & track. if track is false, it does not use that parameter'''
     job_name = "job-standard_product-s1gunw-acq_enumerator"
     priority = 5
     # 2020087, xing
     #tags = '{}_T{}_enumeration'.format(aoi.get('_id', 'AOI'), track)
-    tags = '{}_T{}_enumeration'.format("ACQ", track)
+    #tags = '{}_T{}_enumeration'.format("ACQ", track)
+    tags = requestId
     #    "aoi_name": aoi.get('_id'),
     job_params = {
         "workflow": "orbit_acquisition_enumerator_standard_product.sf.xml",

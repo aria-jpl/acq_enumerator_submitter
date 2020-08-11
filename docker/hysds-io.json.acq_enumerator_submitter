@@ -4,6 +4,12 @@
     "enable_dedup": false,
     "params" : [
     {
+      "name": "request_id",
+      "from": "submitter",
+      "type": "text",
+      "placeholder":"request id"
+    },
+    {
       "name": "geojson_polygon",
       "from": "submitter",
       "type": "region",

@@ -10,6 +10,10 @@
   "time_limit": 1200,
   "params" : [
     {
+      "name": "request_id",
+      "destination": "context"
+    },
+    {
       "name": "geojson_polygon",
       "destination": "context"
     },
