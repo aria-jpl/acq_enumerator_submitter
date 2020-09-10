@@ -72,7 +72,7 @@ def submit_all_jobs(poeorbs, requestId, aoi, track, queue, name, version, enable
         print('Submitting enumeration job for poeorb: {}'.format(poeorb.get('_id')))
         # 2020906, xing
         #submit_enum_job(poeorb, requestId, aoi, track, queue, version, minmatch, acquisition_version, skip_days)
-        submit_enum_job(poeorb, requestId, aoi, track, queue, name, version, enableDedup, minmatch, acquisition_version, skip_days):
+        submit_enum_job(poeorb, requestId, aoi, track, queue, name, version, enableDedup, minmatch, acquisition_version, skip_days)
 
 def determine_matching_poeorbs(poeorbs, acquisitions):
     '''determines which poeorbs are covered by an acquisition. returns a list of those poeorbs'''
