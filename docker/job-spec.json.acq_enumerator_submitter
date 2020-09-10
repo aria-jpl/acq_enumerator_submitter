@@ -30,11 +30,19 @@
     "destination": "context"
   },
   {
+    "name": "enumeration_job_name",
+    "destination": "context"
+  },
+  {
     "name": "enumeration_job_version",
     "destination": "context"
   },
   {
     "name": "enumerator_queue",
+    "destination": "context"
+  },
+  {
+    "name": "enableDedup",
     "destination": "context"
   },
   {

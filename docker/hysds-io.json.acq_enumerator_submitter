@@ -34,6 +34,12 @@
       "placeholder": "Comma-separated track numbers. Optional."
     },
     {
+      "name": "enumeration_job_name",
+      "from": "submitter",
+      "type": "text",
+      "default": "job-request-s1gunw-acq_enumerator-location"
+    },
+    {
       "name": "enumeration_job_version",
       "from": "submitter",
       "type": "jobspec_version",
@@ -43,6 +49,12 @@
       "name": "enumerator_queue",
       "from": "submitter",
       "default": "aria-standard_product-enumerator",
+      "optional": true
+    },
+    {
+      "name": "enableDedup",
+      "from": "submitter",
+      "default": true,
       "optional": true
     },
     { 
