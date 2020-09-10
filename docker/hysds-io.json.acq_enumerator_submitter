@@ -55,7 +55,7 @@
       "name": "enableDedup",
       "from": "submitter",
       "type": "boolean",
-      "default": true
+      "default": "true"
     },
     { 
       "name": "minMatch",
